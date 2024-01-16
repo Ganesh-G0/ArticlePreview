@@ -1,164 +1,511 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap');
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-:root {
-    --VeryDarkGrayishBlue: hsl(217, 19%, 35%);
-    --DeSaturatedDarkBlue: hsl(214, 17%, 51%);
-    --GrayishBlue: hsl(212, 23%, 69%);
-    --LightGrayishBlue: hsl(210, 46%, 95%);
+/* Prevent font size inflation */
+
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, p,
+figure, blockquote, dl, dd {
+  margin-block-end: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100dvh;
+  line-height: 1.5;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4,
+button, input, label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
+  font: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
 }
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
     font-family: 'Manrope', sans-serif;
 }
+p {
+    max-width: 62ch;
+    margin-bottom: 2rem;
+}
+:root {
+    --very-dark-grayish-blue: hsl(217, 19%, 35%);
+    --de-saturated-dark-blue: hsl(214, 17%, 51%);
+    --grayish-blue: hsl(212, 23%, 69%);
+    --light-grayish-blue: hsl(210, 46%, 95%);
+}
 body {
-    height: 100dvh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--LightGrayishBlue);
+    background-color: var(--light-grayish-blue);
 }
-section { 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
+main {
+    margin: 1rem;
+    display: grid;
+    grid-template-areas: 
+    'first'
+    'second'
+    ;
+    max-width: 450px;
     background-color: white;
-    max-width: 350px;
+    border-radius: 0  0 .5em .5em;
 }
-.container { 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    width: 100%;
+.first-section { 
+    grid-area: first;
 }
 .drawer {
     width: 100%;
-    height: 225px;
+    height: 245px;
     object-fit: cover;
-    object-position: 0 10%;
-    border-radius: .5rem .5rem 0 0; 
+    object-position: 0 30%;    
+    border-radius: .5em .5em 0 0; 
+}
+.second-section {
+    grid-area: second;
+}
+.first-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .hero {
-    padding: 2rem;
+    padding: 1rem 2rem 0;
 }
-.hero-h1 {
-    font-size: 1.1rem;
+.hero > h1 {
+    font-size: 1.3rem;
     font-weight: 900;
-    color: var(--VeryDarkGrayishBlue);
+    color: var(--very-dark-grayish-blue);
 }
-.hero-p {
-    font-size: .91rem;
-    color: var(--DeSaturatedDarkBlue);
+.hero > p {
+    font-size: 1.11rem;
+    font-weight: 500;
+    color: var(--de-saturated-dark-blue);
 }
-.socials {
-    border-radius: 0  0 .5rem .5rem;
-    background-color: var(--VeryDarkGrayishBlue);
+/* ----------------------------------Profile Section----------------------------------------- */
+.main-foot {
+    width: 100%;
+    display: flex; 
+    justify-content: space-between;
+    align-items: start;    
+    padding: 1rem 2rem 0;
 }
-.flex {    
+.profile {    
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
     gap: 1rem;
 }
-.main-foot, .socials {
-    height: 60px;
-    min-width: 350px;
+.profile img { 
+    max-width: 50px;
+    border-radius: 50%; 
+}
+.profile-name {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-around;
+    gap: 0;
+}
+.profile-name > h2 {
+    font-size: .8rem;
+    font-weight: 800;
+    color: var(--very-dark-grayish-blue);
+}
+.profile-name > p {
+    font-size: .7rem;
+    font-weight: 600;
+    color: var(--de-saturated-dark-blue);
+}
+/* ---------------------------------------------------------------------------------------Share Section---------------------------------------------------------------------------------- */
+.second-div {
+    width: 100%;
+    max-height: 80.656px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    border-radius: 0  0 .5rem .5rem;
+    background-color: var(--very-dark-grayish-blue);
+}
+.socials-icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     gap: 1rem;
 }
-.socials p {
-    color: var(--GrayishBlue);
+.socials-icons > p {
+    color: var(--grayish-blue);
     font-size: .8rem;
     font-weight: 100;
     letter-spacing: .4rem;
-}
-.michelle {
-    width: 50px;
-    border-radius: 50%;
-}
-.h2 {
-    font-size: .8rem;
-    font-weight: 800;
-    color: var(--VeryDarkGrayishBlue);
-}
-.p {
-    font-size: .6rem;
-    color: var(--DeSaturatedDarkBlue);
+    margin: 0;
 }
 button {
+    cursor: pointer;
+    width: 42px;
+    aspect-ratio: 1 / 1;
+    border: 0;
     border-radius: 50%;
-    padding: .3rem .4rem;
-    border: 1px solid var(--LightGrayishBlue);
 }
-button:hover { cursor: pointer; }
+button img { margin: 0 auto; width: 20px; }
 #revert {
-    background-color: var(--DeSaturatedDarkBlue);
-    border: 1px solid var(--DeSaturatedDarkBlue);
-    padding: .3rem .4rem;
+    background-color: var(--de-saturated-dark-blue);
 }
-#revert img {
-    filter: brightness(0) invert(1);
-}
-.hidden { display: none; } 
+#revert img { filter: brightness(0) invert(1); }
+/* -------------------------------------------------------------------------Display None----------------------------------------------------------------------- */
 
+.d-none { display: none; } 
 
-@media (min-width: 968px) {
-    section {
-        flex-direction: row;
+/* -------------------------------------------------------------------------Media Queries----------------------------------------------------------------------- */
+@media (min-width: 768px) {
+    main {
+        grid-template-columns: 6fr 8fr;
+        grid-template-areas: 
+        'first second';
         max-width: 850px;
+        max-height: fit-content;
     }
-    #first { width: 40%; height: 345px; }
-    #second { width:60%; height: 345px; }
     .drawer {
-        width: 100%;
-        height: 345px;
-        max-width: 100%;
+        height: 100%;
         object-fit: cover;
-        object-position: 0 10%;
+        object-position: 10% center;
         border-radius: .5rem 0 0 .5rem; 
     }
-    .hero-h1 { font-size: 1.4rem; }
-    .hero-p { font-size: 1rem; }
-    .main-foot, .socials { min-width: 451px; }
-    #share:hover, #share:active {
-        background-color: var(--DeSaturatedDarkBlue);
-        border: 1px solid var(--DeSaturatedDarkBlue);
+    .hero { padding-bottom: 0; }
+    .main-foot { padding-top: 0; }
+    .hero > h1 { font-size: 1.5rem; }
+    .hero > p { font-size: 1rem; }
+    #share:hover
+    , #share:active 
+    {
+        background-color: var(--de-saturated-dark-blue);
         padding: .3rem .4rem;
     }
     #share:hover img, #share:active img {
         filter: brightness(0) invert(1);       
     }
+    .main-foot { align-items: start; }
+    .second-section {
+        position: relative;
+    }
     .socials {
-        min-width: 50px;
-        max-width: 320px;
-        border-radius: 1rem;
-        padding: 0 .5rem;
         position: absolute;
+        border-radius: .5rem;
+        max-width: fit-content;
+        height: 45px;
+        padding: 0 2rem;
         bottom: 7rem;
-        left: 8.5rem;
-        display: none;
+        right: -3rem;
     }
     .socials::after {
+        position: absolute;
         width: 0;
         z-index: 1;
         content: '';
         display: block;
-        position: absolute;
         right: 50%;
         left: 50%;
         bottom: -15px;
         border-style: solid;
-        border-color: var(--VeryDarkGrayishBlue) transparent;
+        border-color: var(--very-dark-grayish-blue) transparent;
         border-width: 15px 12px 0 15px;
     }
-    .relative { position: relative; }
-    #revert { display: none; }
-    .show { display: flex; }
+    #revert { display: none; }     
+}/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, p,
+figure, blockquote, dl, dd {
+  margin-block-end: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100dvh;
+  line-height: 1.5;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4,
+button, input, label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
+  font: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+* {
+    font-family: 'Manrope', sans-serif;
+}
+p {
+    max-width: 62ch;
+    margin-bottom: 2rem;
+}
+:root {
+    --very-dark-grayish-blue: hsl(217, 19%, 35%);
+    --de-saturated-dark-blue: hsl(214, 17%, 51%);
+    --grayish-blue: hsl(212, 23%, 69%);
+    --light-grayish-blue: hsl(210, 46%, 95%);
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--light-grayish-blue);
+}
+main {
+    margin: 1rem;
+    display: grid;
+    grid-template-areas: 
+    'first'
+    'second'
+    ;
+    max-width: 450px;
+    background-color: white;
+    border-radius: 0  0 .5em .5em;
+}
+.first-section { 
+    grid-area: first;
+}
+.drawer {
+    width: 100%;
+    height: 245px;
+    object-fit: cover;
+    object-position: 0 30%;    
+    border-radius: .5em .5em 0 0; 
+}
+.second-section {
+    grid-area: second;
+}
+.first-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.hero {
+    padding: 1rem 2rem 0;
+}
+.hero > h1 {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: var(--very-dark-grayish-blue);
+}
+.hero > p {
+    font-size: 1.11rem;
+    font-weight: 500;
+    color: var(--de-saturated-dark-blue);
+}
+/* ----------------------------------Profile Section----------------------------------------- */
+.main-foot {
+    width: 100%;
+    display: flex; 
+    justify-content: space-between;
+    align-items: start;    
+    padding: 1rem 2rem 0;
+}
+.profile {    
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 1rem;
+}
+.profile img { 
+    max-width: 50px;
+    border-radius: 50%; 
+}
+.profile-name {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-around;
+    gap: 0;
+}
+.profile-name > h2 {
+    font-size: .8rem;
+    font-weight: 800;
+    color: var(--very-dark-grayish-blue);
+}
+.profile-name > p {
+    font-size: .7rem;
+    font-weight: 600;
+    color: var(--de-saturated-dark-blue);
+}
+/* ---------------------------------------------------------------------------------------Share Section---------------------------------------------------------------------------------- */
+.second-div {
+    width: 100%;
+    max-height: 80.656px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    border-radius: 0  0 .5rem .5rem;
+    background-color: var(--very-dark-grayish-blue);
+}
+.socials-icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.socials-icons > p {
+    color: var(--grayish-blue);
+    font-size: .8rem;
+    font-weight: 100;
+    letter-spacing: .4rem;
+    margin: 0;
+}
+button {
+    cursor: pointer;
+    width: 42px;
+    aspect-ratio: 1 / 1;
+    border: 0;
+    border-radius: 50%;
+}
+button img { margin: 0 auto; width: 20px; }
+#revert {
+    background-color: var(--de-saturated-dark-blue);
+}
+#revert img { filter: brightness(0) invert(1); }
+/* -------------------------------------------------------------------------Display None----------------------------------------------------------------------- */
+
+.d-none { display: none; } 
+
+/* -------------------------------------------------------------------------Media Queries----------------------------------------------------------------------- */
+@media (min-width: 768px) {
+    main {
+        grid-template-columns: 6fr 8fr;
+        grid-template-areas: 
+        'first second';
+        max-width: 850px;
+        max-height: fit-content;
+    }
+    .drawer {
+        height: 100%;
+        object-fit: cover;
+        object-position: 10% center;
+        border-radius: .5rem 0 0 .5rem; 
+    }
+    .hero { padding-bottom: 0; }
+    .main-foot { padding-top: 0; }
+    .hero > h1 { font-size: 1.5rem; }
+    .hero > p { font-size: 1rem; }
+    #share:hover
+    , #share:active 
+    {
+        background-color: var(--de-saturated-dark-blue);
+        padding: .3rem .4rem;
+    }
+    #share:hover img, #share:active img {
+        filter: brightness(0) invert(1);       
+    }
+    .main-foot { align-items: start; }
+    .second-section {
+        position: relative;
+    }
+    .socials {
+        position: absolute;
+        border-radius: .5rem;
+        max-width: fit-content;
+        height: 45px;
+        padding: 0 2rem;
+        bottom: 7rem;
+        right: -3rem;
+    }
+    .socials::after {
+        position: absolute;
+        width: 0;
+        z-index: 1;
+        content: '';
+        display: block;
+        right: 50%;
+        left: 50%;
+        bottom: -15px;
+        border-style: solid;
+        border-color: var(--very-dark-grayish-blue) transparent;
+        border-width: 15px 12px 0 15px;
+    }
+    #revert { display: none; }     
 }
