@@ -1,27 +1,35 @@
-var smallScreen = window.matchMedia("(max-width: 967px)");
+const smallScreen = window.matchMedia("(max-width: 767px)");
+const largeScreen = window.matchMedia("(min-width: 768px)");
+
+const dNone = "d-none";
+const shareBtn = $("#share");
+const revertBtn = $("#revert");
+const profile = $("#main-foot");
+const social = $("#socials");
+
 if (smallScreen.matches) {
-    $("#share").click(()=> {
-        $("#main-foot").addClass("hidden");
-        $("#socials").removeClass("hidden");
+   shareBtn.click(()=> {
+        if (profile.hasClass(dNone) == false) {
+            profile.addClass(dNone);
+            social.removeClass(dNone);
+        }
+        else {      
+            social.addClass(dNone);
+            profile.removeClass(dNone);
+        }
     })
-    $("#revert").click(()=> {
-        $("#main-foot").removeClass("hidden");
-        $("#socials").addClass("hidden");
+    revertBtn.click(()=> {
+        if (profile.hasClass(dNone) == false) {            
+            profile.addClass(dNone);
+            social.removeClass(dNone);
+        }
+        else {            
+            social.addClass(dNone);
+            profile.removeClass(dNone);
+        }
+    })
+} else if (largeScreen.matches){
+    shareBtn.click(()=> {
+        social.removeClass(dNone);
     })
 }
-
-var largeScreen = window.matchMedia("(min-width: 968px)");
-if (largeScreen.matches){
-    $("#share").click(()=> {
-        $("#socials").addClass("show");
-    })
-}
-
-// var x = window.matchMedia("(min-width: 768px)");
-// x.addEventListener("change", function() { })
-// if(x) {
-
-//     $("#share").click(()=> {
-//         $("#socials").addClass("show");
-//     })
-// }
